@@ -2,6 +2,8 @@ import React from "react";
 import './App.css';
 import Header from "./Header";
 import Home from "./Home";
+import Checkout from "./Checkout";
+import { BrowserRouter as Router, Switch, Route, Routes } from "react-router-dom";
 
 
 
@@ -43,15 +45,34 @@ const app = initializeApp(firebaseConfig);
 
 function App() {
   return (
-    <div className="App">
+
+    <Router>
+      <div className="App">
+        
+        <Switch>
+          <Route path = "/checkout">
+            <Header />
+            <Checkout />
+          </Route>
+
+          <Route path="/">
+            
+            <Header />
+            <Home />
+            
+
+          </Route>
+       
+        </Switch>
+        
       
-      
-      <Header />
-      <Home />
+      </div>
+
+    </Router>
+    
+    
 
 
-
-    </div>
   );
 }
 
