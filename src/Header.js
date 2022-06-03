@@ -2,6 +2,7 @@ import React from 'react'
 import './Header.css'
 import SearchIcon from '@mui/icons-material/Search';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { Link } from "react-router-dom";
 
 
 
@@ -9,10 +10,13 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 const Header = () => {
   return (
     <div className='Header'>
-        <img 
-            className='header__logo'
-            src="https://www.we-pack.co.uk/images/ww/Ecommerce/Amazon%20Logo.jpg"
-        />
+        <Link to = "/">
+            <img 
+                className='header__logo'
+                src="https://www.we-pack.co.uk/images/ww/Ecommerce/Amazon%20Logo.jpg"
+            />
+        </Link>
+        
         
         <div className='header__search'>
             <input
