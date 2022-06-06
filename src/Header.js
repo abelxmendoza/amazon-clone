@@ -2,12 +2,17 @@ import React from 'react'
 import './Header.css'
 import SearchIcon from '@mui/icons-material/Search';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import { Link } from "react-router-dom";
+import { BrowserRouter as Link} from "react-router-dom";
+import { useStateValue } from './StateProvider';
 
 
 
 
 const Header = () => {
+    
+    //for the basket number to increase, figure this out
+    //const [{ basket, user }, dispatch] = useStateValue;
+
   return (
     <div className='Header'>
         <Link to = "/">
@@ -60,16 +65,22 @@ const Header = () => {
 
             </div>
 
-            <div className='header__optionBasket'>
-                <ShoppingCartIcon />
-                <span className='header__optionLineTwo header__basketCount'>0</span>
+            <Link to = "/checkout">
+                <div className='header__optionBasket'>
+                    <ShoppingCartIcon />
+                    <span className='header__optionLineTwo header__basketCount'>
+                        0{/*basket?.length*/}
+                    </span>
 
-            </div>
+                </div>
+            </Link>
+
+        
 
         </div>
-        
+       
     </div>
   )
 }
 
-export default Header
+export default Header;
