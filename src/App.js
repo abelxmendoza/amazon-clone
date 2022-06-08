@@ -5,46 +5,40 @@ import Home from "./Home";
 import Checkout from "./Checkout";
 import Login  from "./Login";
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
-
-
-
-// Import the functions you need from the SDKs you need
-
-import { initializeApp } from "firebase/app";
-
-// TODO: Add SDKs for Firebase products that you want to use
-
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-
-// Your web app's Firebase configuration
-
-const firebaseConfig = {
-
-  apiKey: "AIzaSyBb7Dc_Ql_Q8lG98MTVU3ylF4YcC-ZviNk",
-
-  authDomain: "clone-9fa80.firebaseapp.com",
-
-  projectId: "clone-9fa80",
-
-  storageBucket: "clone-9fa80.appspot.com",
-
-  messagingSenderId: "629907794621",
-
-  appId: "1:629907794621:web:16edf0eda74f25ca0f25d4"
-
-};
-
-
-// Initialize Firebase
-
-const app = initializeApp(firebaseConfig);
-
-
+import { useEffect } from "react";
+import { auth } from "./firebase"
+import { useStateValue } from "./StateProvider";
+//import { initializeApp } from "firebase/app";
 
 
 
 function App() {
+
+  const [{}, dispatch] = useStateValue();
+
+  useEffect(() => {
+      //will only run once when the app component loads...
+
+    auth.onAuthStateChanged(authUser => {
+      console.log('THE USER IS >>> ', authUser);
+
+      if (authUser) {
+        // the user just logged in / the user was logged in
+        dispatch({
+          type: 'SET_USER',
+          user: authUser
+        })
+      }
+      else {
+        // The user is logged out
+        dispatch({
+          type: 'SET_USER',
+          user: null
+        })
+      }
+    })
+  }, [])
+
   return (
 
     <Router>

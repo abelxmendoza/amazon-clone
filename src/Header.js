@@ -4,6 +4,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import  { Link } from "react-router-dom";
 import { useStateValue } from './StateProvider';
+import { auth } from "./firebase"
 
 
 
@@ -12,7 +13,16 @@ const Header = () => {
     
     //for the basket number to increase, figure this out
     //const [{ basket, user }, dispatch] = useStateValue;
+    
+    /*
+    const handleAuthentication = () => {
 
+        if (user) {
+            
+            auth.signOut();
+        }
+    }
+    */
   return (
     <div className='Header'>
         <Link to = "/">
@@ -34,8 +44,14 @@ const Header = () => {
         </div>
 
         <div className="header__search">
+            
+            {/*Change this to handle user Login status on the header */}
+                        {/* <Link to = {!user && '/login'}> */}
 
-            <Link to = '/login'>
+            <Link to = {'/login'}>
+                
+                {/*Add this line to handle login status when you click*/}
+                {/* <div onClick={ handleAuthentication } */}
                 <div className='header__option'>
                     <span className='header__optionLineOne'>
                         Hello Guest
