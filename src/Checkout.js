@@ -20,7 +20,7 @@ const Checkout = () => {
             </img>
 
             <div>
-                <h3>Hello, {/*user.email*/}</h3>
+                <h3>Hello, {user?.email}</h3>
                 <h2 className='checkout__title'>Your Shopping Basket</h2>
 
                    
@@ -54,16 +54,7 @@ const Checkout = () => {
                 { /* Basket Item */ }
             </div>
         </div>
-       
-       
-       
-       
-      
-      
-      
-      
-      
-       
+          
        
         <div className = "checkout__right">
             <Subtotal /> 

@@ -22,7 +22,9 @@ const Header = () => {
             auth.signOut();
         }
     }
+
     */
+    
   return (
     <div className='Header'>
         <Link to = "/">
